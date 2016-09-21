@@ -1,0 +1,6 @@
+== 5. default 파라미터
+* 파라미터에 변수의 기본값 지정 가능
+[source,javascript]
+function f (x, y = 7, z = 42) {
+    return x + y + z
+}

@@ -1,0 +1,43 @@
+== 3. arrow 표기법
+* Java 에서 람다 표현식과 비슷함
+
+* Java vs Javascript
+- Java8 람다(Lambda) => 익명 클래스(Anonymous Class)
+- Javascript => 익명 함수
+
+* 다음 표현의 간소화라고 생각할 수 있음
+[source,javascript]
+function(a1, a2, ...){ //기존 표기법
+  something; //리턴값 또는 특정 로직 구현 가능
+}
+//arrow 표기법
+(a1, a2, ...) => something
+
+* 장점 +
+- closure syntax 와 비슷 +
+- 현재 object context에서 직관적으로 핸들링 가능
+
+[source,javascript]
+odds  = evens.map(v => v + 1) // 파라미터 : v, 리턴값 : v+1
+pairs = evens.map(v => ({ even: v, odd: v + 1 })) // 파라미터 : v, 리턴값 : 배열
+nums  = evens.map((v, i) => v + i) // 여러개의 파라미터도 가능
+nums.forEach(v => {
+   if (v % 5 === 0)
+       fives.push(v)
+})
+
+* 참고) ES5
+[source,javascript]
+odds  = evens.map(function (v) { return v + 1; });
+pairs = evens.map(function (v) { return { even: v, odd: v + 1 }; });
+nums  = evens.map(function (v, i) { return v + i; });
+
+* arrow 표기법에서 this
+ - 화살표 함수는 (자신을) 둘러싸는 문맥의 this 값
+[source,javascript]
+function Person(){
+  this.age = 0;
+  setInterval(() => {
+    this.age++; // |this| 는 정확히 person 객체를 참조
+  }, 1000);
+}

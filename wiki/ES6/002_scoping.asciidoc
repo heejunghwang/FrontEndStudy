@@ -1,0 +1,20 @@
+== 2. scoping
+* Block-Scoped Variables
+- var : 함수내에서 살아있음 (function-scoped)
+[source,javascript]
+function func() {
+    if (true) {
+       var tmp = 123;
+    }
+    console.log(tmp); // 123
+}
+- const, let : 블록내에서만 살아있음 (block-scoped)
+[source,javascript]
+function func() {
+  if (true) {
+    let tmp = 123;
+   }
+   console.log(tmp); // ReferenceError: tmp is not defined
+}
+
+* Block-Scoped Functions

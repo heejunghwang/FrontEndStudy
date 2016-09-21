@@ -1,0 +1,11 @@
+== 6. Rest 파라미터(...)
+* Java(자바 5.0부터 지원) 가변인자(Varargs)와 비슷
+- 자바 예제
+[source,java]
+public class VarArgsMain {
+   public static void display(String... strs) { //파라미터 타입에서 ...을 붙이는 형태
+      for (String s : strs) {
+         System.out.println("가변인수형태:" + s);
+      }
+   }
+}
