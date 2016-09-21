@@ -1,16 +1,27 @@
 == 4. 전개 연산자(Spread operator)
+* 반복되는 콜렉션의 요소를 확장시킬 수 있음
 * 배열을 함수의 인수로 사용하고 싶은 경우
 * Function.prototype.apply 보완한 기능
 - Function.prototype.apply 예
 [source,javascript]
-function myFunction(x, y, z) { }
+function myFunction(x, y, z) {
+  console.log(x);
+  console.log(y);
+  console.log(z);
+}
 var args = [0, 1, 2];
 myFunction.apply(null, args);
 - 전개 연산자(Spread operator) 사용 예
 [source,javascript]
-function myFunction(x, y, z) { }
+function myFunction(x, y, z) {
+  console.log(x);
+  console.log(y);
+  console.log(z);
+}
 var args = [0, 1, 2];
 myFunction(...args);
+//잘못된 방법 : myFunction(args)
+
 * 문법
 - 함수 호출
 [source,javascript]
@@ -23,4 +34,3 @@ myFunction(...iterableObj);
 - 비구조화(destructuring) 용
 [source,javascript]
 [a, b, ...iterableObj] = [1, 2, 3, 4, 5];
-* 참조 사이트 : https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Spread_operator
