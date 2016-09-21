@@ -1,0 +1,176 @@
+== 1. const, let vs var
+
+[TIP] 
+[ Javascript Hoisting ] +
+후선언된 변수나, 함수들이 해당 Scope에서 최상위에 위치하는 현상 +
+자바스크립트에서는 var 선언문 전에 변수를 사용해도 이미 선언된 것으로 간주한다. +
+이런 동작 방식을 "호이스팅"(hoisting)이라고 한다. +
+
+* var : Hosting 적용됨
+[source,javascript]
+console.log(test1);
+var test1; //undefined
+
+* const
+[source,javascript]
+console.log(test2);
+const test2; //error
+
+** 특징
+변수를 참조할 때 사용하는 것이 좋음 (내부 주소값)
+[source,javascript]
+const bar = [];
+bar.push('abc'); // OK, the array is mutable
+
+*** 참고 : 참조 변수도 변경하고 싶지 않을 때
+ const EMPTY_ARRAY = Object.freeze([]);
+
+* let
+[source,javascript]
+console.log(test3);
+let test3; //error
+
+** 특징
+"mutable"(변경가능한) 속성을 가지고있음 +
+변수를 변경할 때 (mutate a variable) 사용하는 것이 좋다 
+[source,javascript]
+let foo = 'abc';
+foo = 'def';
+console.log(foo); // def
+
+== 2. scoping
+* Block-Scoped Variables
+- var : 함수내에서 살아있음 (function-scoped)
+[source,javascript]
+function func() {
+    if (true) {
+       var tmp = 123;
+    }
+    console.log(tmp); // 123
+}
+- const, let : 블록내에서만 살아있음 (block-scoped)
+[source,javascript]
+function func() {
+  if (true) {
+    let tmp = 123;
+   }
+   console.log(tmp); // ReferenceError: tmp is not defined
+}
+
+* Block-Scoped Functions
+
+== 3. arrow 표기법
+* Java 에서 람다 표현식과 비슷함
+
+* Java vs Javascript
+- Java8 람다(Lambda) => 익명 클래스(Anonymous Class)
+- Javascript => 익명 함수
+
+* 다음 표현의 간소화라고 생각할 수 있음
+[source,javascript]
+function(a1, a2, ...){ //기존 표기법
+  something; //리턴값 또는 특정 로직 구현 가능
+}
+//arrow 표기법
+(a1, a2, ...) => something
+
+* 장점 +
+- closure syntax 와 비슷 +
+- 현재 object context에서 직관적으로 핸들링 가능
+
+[source,javascript]
+odds  = evens.map(v => v + 1) // 파라미터 : v, 리턴값 : v+1
+pairs = evens.map(v => ({ even: v, odd: v + 1 })) // 파라미터 : v, 리턴값 : 배열
+nums  = evens.map((v, i) => v + i) // 여러개의 파라미터도 가능
+nums.forEach(v => {
+   if (v % 5 === 0)
+       fives.push(v)
+})
+
+* 참고) ES5
+[source,javascript]
+odds  = evens.map(function (v) { return v + 1; });
+pairs = evens.map(function (v) { return { even: v, odd: v + 1 }; });
+nums  = evens.map(function (v, i) { return v + i; });
+
+* arrow this
+ - 화살표 함수는 (자신을) 둘러싸는 문맥의 this 값
+[source,javascript]
+function Person(){
+  this.age = 0;
+  setInterval(() => {
+    this.age++; // |this| 는 정확히 person 객체를 참조
+  }, 1000);
+}
+
+== 4. 전개 연산자(Spread operator)
+* 배열을 함수의 인수로 사용하고 싶은 경우
+* Function.prototype.apply 보완한 기능
+- Function.prototype.apply 예
+[source,javascript]
+function myFunction(x, y, z) { }
+var args = [0, 1, 2];
+myFunction.apply(null, args);
+- 전개 연산자(Spread operator) 사용 예
+[source,javascript]
+function myFunction(x, y, z) { }
+var args = [0, 1, 2];
+myFunction(...args);
+* 문법
+- 함수 호출
+[source,javascript]
+myFunction(...iterableObj);
+
+- 배열 리터럴 용
+[source,javascript]
+[...iterableObj, 4, 5, 6];
+
+- 비구조화(destructuring) 용
+[source,javascript]
+[a, b, ...iterableObj] = [1, 2, 3, 4, 5];
+* 참조 사이트 : https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Spread_operator
+
+== 5. default 파라미터
+* 파라미터에 변수의 기본값 지정 가능
+[source,javascript]
+function f (x, y = 7, z = 42) {
+    return x + y + z
+}
+
+== 6. Rest 파라미터(...)
+* Java(자바 5.0부터 지원) 가변인자(Varargs)와 비슷
+- 자바 예제
+[source,java]
+public class VarArgsMain {
+   public static void display(String... strs) { //파라미터 타입에서 ...을 붙이는 형태
+      for (String s : strs) {
+         System.out.println("가변인수형태:" + s);
+      }
+   }
+}
+
+== 7. Template
+* 다중 라인의 코드를 직관적으로 사용가능
+[source,javascript]
+var customer = { name: "Foo" }
+var card = { amount: 7, product: "Bar", unitprice: 42 }
+var message = `Hello ${customer.name},
+want to buy ${card.amount} ${card.product} for
+a total of ${card.amount * card.unitprice} bucks?`
+
+* Raw String Access
+
+== 8. 강화된 object properties
+== 9. {x,y}, {[''+''] : aaaa}, obj = { foo(a,b) {}}...
+== 10. 배열 매칭
+[source,javascript]
+var [a,b] = [b,a]
+
+
+== 11. 객체 매칭
+[source,javascript]
+var {op, lhs, rhs} = aaa; +
+
+== 12.modules
+== 13. export, import 등등
+== 14. class
