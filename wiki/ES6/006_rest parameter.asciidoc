@@ -1,6 +1,7 @@
 == 6. Rest 파라미터(...)
+* 여러 갯수의 argument를 가질 수 있을 때(variadic) 사용
 * Java(자바 5.0부터 지원) 가변인자(Varargs)와 비슷
-- 자바 예제
+- 자바 예
 [source,java]
 public class VarArgsMain {
    public static void display(String... strs) { //파라미터 타입에서 ...을 붙이는 형태
@@ -9,3 +10,10 @@ public class VarArgsMain {
       }
    }
 }
+
+- javascript 예
+[source,javascript]
+function f (x, y, ...a) {
+    return (x + y) * a.length
+}
+f(1, 2, "hello", true, 7) === 9
