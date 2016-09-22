@@ -1,1 +1,1 @@
-== 8. 강화된 object properties
+== 10. Object Matching
