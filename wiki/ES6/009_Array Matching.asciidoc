@@ -1,1 +1,1 @@
-== 8. 강화된 object properties
+== 9. Array Matching
