@@ -1,1 +1,2 @@
-== 8. 강화된 object properties
+== 11. Modules
+=== 글로벌 변수를 오염시키지 않고, module로 부터 변수를 export, import 할 수 있음
