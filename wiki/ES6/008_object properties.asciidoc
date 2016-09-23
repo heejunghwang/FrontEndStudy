@@ -1,5 +1,6 @@
 == 8. 강화된 object properties
 === 프로퍼티 선언
+[source, javascript]
 obj = { x, y }
 
 === 계산되는 프로퍼티 이름 선언
