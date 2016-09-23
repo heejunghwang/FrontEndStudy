@@ -8,4 +8,6 @@ want to buy ${card.amount} ${card.product} for
 a total of ${card.amount * card.unitprice} bucks?`
 
 * Raw String Access
-** 참고 사이트 : http://stackoverflow.com/questions/34772762/what-are-the-actual-uses-of-es6-raw-string-access
+- template strings에서 String만 얻기위해서 사용함
+[source,javascript]
+String.raw`What's result of ${2+3}!`;
