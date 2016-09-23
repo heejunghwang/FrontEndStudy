@@ -23,3 +23,11 @@ Shape.prototype.move = function (x, y) {
     this.x = x;
     this.y = y;
 };
+
+=== * 클래스 상속
+
+=== * 클래스 접근
+
+=== * static member
+
+=== * getter/setter
