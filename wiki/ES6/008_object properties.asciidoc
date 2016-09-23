@@ -1,1 +1,42 @@
 == 8. 강화된 object properties
+=== 프로퍼티 선언
+obj = { x, y }
+
+=== 계산되는 프로퍼티 이름 선언
+[source, javascript]
+//ES6
+let obj = {
+    foo: "bar",
+    [ "baz" + quux() ]: 42//obj[baz1]
+}
+//ES5
+var obj = {
+    foo: "bar"
+};
+obj[ "baz" + quux() ] = 42;	//obj[baz1]
+
+=== 메소드 프로퍼티
+[source, javascript]
+//ES6
+obj = {
+    foo (a, b) {
+        …
+    },
+    bar (x, y) {
+        …
+    },
+    *quux (x, y) {
+        …	//결과값 : 함수자체를 리턴 (function quxx(x,y))
+    }
+}
+//ES5
+obj = {
+    foo: function (a, b) {
+        …
+    },
+    bar: function (x, y) {
+        …
+    },
+    //  quux: no equivalent in ES5
+    …
+};
