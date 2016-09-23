@@ -1,1 +1,3 @@
 == 9. Array Matching
+
+** 참고 사이트 : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment
