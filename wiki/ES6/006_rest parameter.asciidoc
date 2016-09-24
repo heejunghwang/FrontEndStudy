@@ -17,3 +17,19 @@ function f (x, y, ...a) {
     return (x + y) * a.length
 }
 f(1, 2, "hello", true, 7) === 9
+
+
+[source,javascript]
+function x(a=1) {
+ console.log(a);
+}
+undefined
+x()
+VM2827:2 1
+undefined
+x(undefined);
+VM2827:2 1
+undefined
+x(null);
+VM2827:2 null
+undefined
