@@ -7,6 +7,8 @@ var message = `Hello ${customer.name},
 want to buy ${card.amount} ${card.product} for
 a total of ${card.amount * card.unitprice} bucks?`
 
+*back-tick
+
 * Raw String Access
 - template strings에서 String만 얻기위해서 사용함
 [source,javascript]
