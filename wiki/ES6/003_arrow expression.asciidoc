@@ -41,3 +41,24 @@ function Person(){
     this.age++; // |this| 는 정확히 person 객체를 참조
   }, 1000);
 }
+
+
+
+
+//참고
+[source,javascript]
+var x = (1) => 1+2; 
+var x = (v) => v+1; 
+undefined
+x(1)
+2
+var x = (v) => return v+1; 
+var x = (v) => {return v+1}; 
+undefined
+x(1)
+2
+var x = (v) => {v+1}; 
+undefined
+x(1)
+undefined
+var x = v => v+1; 
