@@ -18,3 +18,18 @@ function func() {
 }
 
 * Block-Scoped Functions
+
+
+
+
+[source,javascript]
+var aaa = 100;
+undefined
+const bbb=200;
+undefined
+window.aaa
+100
+window.bbb
+undefined
+bbb
+200
