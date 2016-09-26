@@ -8,6 +8,15 @@ function func() {
     }
     console.log(tmp); // 123
 }
+
+
+[source,javascript]
+var aaa = 100; //undefined
+const bbb=200; //undefined
+window.aaa //100
+window.bbb //undefined
+bbb //200
+
 - const, let : 블록내에서만 살아있음 (block-scoped)
 [source,javascript]
 function func() {
@@ -22,14 +31,4 @@ function func() {
 
 
 
-[source,javascript]
-var aaa = 100;
-undefined
-const bbb=200;
-undefined
-window.aaa
-100
-window.bbb
-undefined
-bbb
-200
+
