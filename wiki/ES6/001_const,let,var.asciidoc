@@ -16,10 +16,9 @@ var test1; //undefined
 console.log(PI);
 const PI; //error
 
-** 참고 : const는 관습적으로 변수명을 대문자로 사용 
-
 ** 특징
-변수를 참조할 때 사용하는 것이 좋음 (내부 주소값)
+재선언 시에 에러가 발생
+변수 재할당(reassign) 할 수 없음
 [source,javascript]
 const bar = [];
 bar.push('abc'); // OK, the array is mutable
@@ -28,13 +27,14 @@ bar.push('abc'); // OK, the array is mutable
  const EMPTY_ARRAY = Object.freeze([]);
 
 * let
+재선언 시에 에러가 발생
 [source,javascript]
 console.log(test3);
 let test3; //error
 
 ** 특징
-"mutable"(변경가능한) 속성을 가지고있음 +
-변수를 변경할 때 (mutate a variable) 사용하는 것이 좋다 
+변수 재할당(reassign) 할 수 있음(변수를 변경할 때 (mutate a variable) 사용하는 것이 좋다)+
+예: 반복문
 [source,javascript]
 let foo = 'abc';
 foo = 'def';
