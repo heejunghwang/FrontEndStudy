@@ -9,7 +9,6 @@ function func() {
     console.log(tmp); // 123
 }
 
-
 [source,javascript]
 var aaa = 100; //undefined
 const bbb = 200; //undefined
