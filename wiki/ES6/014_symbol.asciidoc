@@ -1,3 +1,4 @@
+[source, javascript]
 Symbol("foo") !== Symbol("foo")
 const foo = Symbol()
 const bar = Symbol()
