@@ -1,17 +1,18 @@
+* Iterable objects는 Iterable interface로 구현된 인터페이스이다.
+
+* for-of 문은 어떠한 iterable object를 반복할 수 있는 정형화된 문법제공
 [source, javascript]
-let fibonacci = {
-    [Symbol.iterator]() {
-        let pre = 0, cur = 1
-        return {
-           next () {
-               [ pre, cur ] = [ cur, pre + cur ]
-               return { done: false, value: cur }
-           }
-        }
-    }
+let iterable = [1, 2, 3];
+for (let item of iterable) {
+    console.log(item); // 1, 2, 3
 }
-for (let n of fibonacci) {
-    if (n > 1000)
-        break
-    console.log(n)
+//Set
+let iterable2 = new Set([4, 5, 6]);
+for (let item of iterable2) {
+    console.log(item); // 4, 5, 6
+}
+//String
+let iterable3 = '789';
+for (let item of iterable3) {
+    console.log(item); // '7', '8', '9'
 }
