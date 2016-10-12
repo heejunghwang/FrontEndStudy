@@ -1,13 +1,14 @@
 [source, javascript]
-Symbol("foo") !== Symbol("foo")
-const foo = Symbol()
-const bar = Symbol()
-typeof foo === "symbol"
-typeof bar === "symbol"
-let obj = {}
-obj[foo] = "foo"
-obj[bar] = "bar"
-JSON.stringify(obj) // {}
-Object.keys(obj) // []
-Object.getOwnPropertyNames(obj) // []
-Object.getOwnPropertySymbols(obj) // [ foo, bar ]
+var obj = {};
+var a = Symbol("a")
+
+obj[a] = "a";
+obj[Symbol.for("b")] = "b";
+obj["c"] = "c";
+obj.d = "d";
+
+for (var i in obj) {
+   console.log(i); // "c" and "d" 출
+}
+
+console.log(obj[a]); //"a" 출
