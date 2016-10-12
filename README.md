@@ -16,39 +16,34 @@
  * 강화된 object properties
  * 배열 매칭
  * 객체 매칭
- * modules : export, import 등등
- * class
-   
 ------------------------------- 
 
  - 2주
 -------------------------------
-* 심볼
-* interators, for of
-* 제너레이터
-* Array.find(), 
-* Array.findIndex(), 
-* Object.assign, 
-* String.repeat,
-* String.startsWith
-* String.endsWith
-* String.includes
-* Number.isNaN
-* Number.isFinite
-* Number.isSafeInteger
-* Math.trunc
-* Math.sign
-
+ * modules : export, import 등등
+ * class
+ * Array.find(), 
+ * Array.findIndex(), 
+ * Object.assign, 
+ * String.repeat,
+ * String.startsWith
+ * String.endsWith
+ * String.includes
+ * Number.isNaN
+ * Number.isFinite
+ * Number.isSafeInteger
+ * Math.trunc
+ * Math.sign
 -------------------------------
  
  - 3주
 -------------------------------
-- 심볼
-- 이터러블, 이터레이터
-- 제너레이터
-- promise
-- set, map, weekset, weekmap
-- proxy
+ * 심볼
+ * 이터러블, 이터레이터, , for of
+ * 제너레이터
+ * promise
+ * set, map, weekset, weekmap
+ * proxy
 -------------------------------
  
 ### 2. Javascript 패턴, 최적화 연구
