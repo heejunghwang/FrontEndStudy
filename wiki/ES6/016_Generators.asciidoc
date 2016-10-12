@@ -1,0 +1,13 @@
+* 내부적으로 상태를 유지해야할 필요가 있을때 유용함. 예)iterators을 위한 팩토리
+
+[source, javascript]
+function* idMaker(){
+  var index = 0;
+  while(true)
+    yield index++;
+}
+var gen = idMaker();
+console.log(gen.next().value); // 0
+console.log(gen.next().value); // 1
+console.log(gen.next().value); // 2
+// ...
