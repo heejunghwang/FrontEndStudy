@@ -31,3 +31,26 @@ iterator.next(); // { value: 'a', done: false }
 iterator.next(); // { value: 'b', done: false }
 iterator.next(); // { value: 'c', done: false }
 iterator.next(); // { value: undefined, done: true }
+
+3.객체를 iteration처럼 사용하기
+[source, javascript]
+let iterable = {
+    0: 'a',
+    1: 'b',
+    2: 'c',
+    length: 3,
+    [Symbol.iterator]() {
+        let index = 0;
+        return {
+            next: () => {      //iteration처럼 사용하기 위해 next() 메소드 추가
+                let value = this[index];
+                let done = index >= this.length;
+                index++;
+                return { value, done };
+            }
+        };
+    }
+};
+for (let item of iterable) {
+    console.log(item); // 'a', 'b', 'c'
+}
