@@ -4,12 +4,17 @@
 
 [source, javascript]
 var obj = {};
+//symbol
 var a = Symbol("a")
 obj[a] = "a";
 obj[Symbol.for("b")] = "b";
+//general
 obj["c"] = "c";
 obj.d = "d";
+//confirm
 for (var i in obj) {
    console.log(i); // "c" and "d"
 }
 console.log(obj[a]); //"a"
+//add same symbol
+obj[Symbol.for("a")] = "aa"; //check result
