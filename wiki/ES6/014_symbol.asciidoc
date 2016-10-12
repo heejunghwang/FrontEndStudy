@@ -1,3 +1,7 @@
+* 심볼
+** Symbol (programming)
+- primitive 데이터 타입이며, 인스턴스가 사람이 읽을 수 있는 유일한 값
+
 [source, javascript]
 var obj = {};
 var a = Symbol("a")
