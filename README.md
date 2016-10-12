@@ -43,10 +43,12 @@
  
  - 3주
 -------------------------------
-* set, map, week-set, week-map
-* promise
-* proxy
-
+- 심볼
+- 이터러블, 이터레이터
+- 제너레이터
+- promise
+- set, map, weekset, weekmap
+- proxy
 -------------------------------
  
 ### 2. Javascript 패턴, 최적화 연구
