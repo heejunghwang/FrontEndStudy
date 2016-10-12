@@ -22,8 +22,9 @@ for (let item of iterable3) {
 2, Iterators
 
 Iterator interface를 구현한 object임. 즉, Iterator 객체는 반드시 next 메소드를 가지고 있어야한다. next 메소드는 { value: Any, done: Boolean }를 리턴한다. 
-let iterable = ['a', 'b', 'c'];
 
+[source, javascript]
+let iterable = ['a', 'b', 'c'];
 // Explicit "low-level" iterator consumption:
 let iterator = iterable[Symbol.iterator]();
 iterator.next(); // { value: 'a', done: false }
