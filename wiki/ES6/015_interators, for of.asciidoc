@@ -1,3 +1,4 @@
+1. Iterable
 * Iterable objects는 Iterable interface로 구현된 인터페이스이다.
 
 * for-of 문은 어떠한 iterable object를 반복할 수 있는 정형화된 문법제공
@@ -16,3 +17,16 @@ let iterable3 = '789';
 for (let item of iterable3) {
     console.log(item); // '7', '8', '9'
 }
+
+
+2, Iterators
+
+Iterator interface를 구현한 object임. 즉, Iterator 객체는 반드시 next 메소드를 가지고 있어야한다. next 메소드는 { value: Any, done: Boolean }를 리턴한다. 
+let iterable = ['a', 'b', 'c'];
+
+// Explicit "low-level" iterator consumption:
+let iterator = iterable[Symbol.iterator]();
+iterator.next(); // { value: 'a', done: false }
+iterator.next(); // { value: 'b', done: false }
+iterator.next(); // { value: 'c', done: false }
+iterator.next(); // { value: undefined, done: true }
