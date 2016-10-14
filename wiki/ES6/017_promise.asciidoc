@@ -1,3 +1,92 @@
-IE 지원안함???
-
+* IE 지원안함!!!
 https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise
+
+
+* Promise는 비동기 처리를 위한 방법을 제공한다. 
+
+* Promise를 생성하는 표준적인 방법은 new Promise 를 사용한 생성자를 이용하는 방법이다. 파라미터에 2가지 function들을 제공하는 핸들러이다. 첫번째 핸들러는 resolve라 불리는데, 그것이 준비가 되었을때, future value을 가지고 호출하는 방식이다. 두번째 핸들러는 reject이라 불리는 function인데, future value를 받지 못했을때 거절하는 것이다.
+
+[source, javascript]
+var p = new Promise(function(resolve, reject) {  
+   if (/* condition */) {
+      resolve(/* value */);  // fulfilled successfully
+   }
+   else {
+      reject(/* reason */);  // error, rejected
+   }
+});
+
+* Promise의 상태
+1. Pending : Promise가 수행되기 전까지
+2. Fulfilled : 첫번째 handler가 호출될때, Promise는 handler에게 값을 전달하는 역할을 한다.
+3. Rejected : 두번째 handler가 호출될때, Promise는  handler에게 값을 전달하는 거절을 한다.
+
+Promise.resolve() 메소드를 사용하여 Promise를 즉시 만들 수 있다.
+[source, javascript]
+var p = Promise.resolve(42);  
+
+- Promise 후에 사용하기
+Promise가 수행된 후 Promise 값을 가공하고 싶을때, then()이라는 메소드를 사용한다.
+[source, javascript]
+var p = new Promise((resolve, reject) => resolve(5));  
+p.then((val) => console.log(val)); // 5
+
+then()은 2가지 파라미터를 가진다.
+1. Promise가 수행되었을때
+2. Promise가 수행되지 않았을때
+p.then((val) => console.log("fulfilled:", val),  
+       (err) => console.log("rejected: ", err));
+	   
+2가지 파라미터 중 하나는 생략할 수도 있다. (아래참조)
+
+[source, javascript]
+p.then((val) => console.log("fulfilled:", val))  
+ .catch((err) => console.log("rejected:", err));
+[source, javascript]
+p.then((val) => console.log("fulfilled:", val))  
+ .then(null, (err) => console.log("rejected:", err));
+ 
+then()은 체이닝 될 수도 있다.
+
+- 에러처리
+에러를 처리하기 위해서 then()보다는 catch()를 사용해야 한다. catch가 좀 더 직관적이다. 
+
+- Promise.all
+Promise.all는 배열 내 모든 값이 결정(resolve)할 때까지 기다림
+[source, javascript]
+var p1 = Promise.resolve(3);
+var p2 = 1337;
+var p3 = new Promise(function(resolve, reject) {
+  setTimeout(resolve, 100, "foo");
+}); 
+[source, javascript]
+Promise.all([p1, p2, p3]).then(function(values) { 
+  console.log(values); // [3, 1337, "foo"] 
+});
+
+Promise.all 은 배열 내 요소 중 어느 하나라도 거절(reject)하면 즉시 거절합니다. 즉 Promise.all 은 빠르게 실패합니다: 만약 timeout 이후 결정(resolve)하는 4개의 Promise를 가지고 있고, 그 중 하나가 거절(reject)하면 Promise.all 은 즉시 거절합니다.
+[source, javascript]
+var p1 = new Promise(function(resolve, reject) { 
+  setTimeout(resolve, 1000, "one"); 
+}); 
+var p2 = new Promise(function(resolve, reject) { 
+  setTimeout(resolve, 2000, "two"); 
+});
+var p3 = new Promise(function(resolve, reject) {
+  setTimeout(resolve, 3000, "three");
+});
+var p4 = new Promise(function(resolve, reject) {
+  setTimeout(resolve, 4000, "four");
+});
+var p5 = new Promise(function(resolve, reject) {
+  reject("reject");
+});
+[source, javascript]
+Promise.all([p1, p2, p3, p4, p5]).then(function(value) { 
+  console.log(value);
+}, function(reason) {
+  console.log(reason)
+});
+[source, javascript]
+//From console:
+//"reject"
