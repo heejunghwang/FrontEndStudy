@@ -1,5 +1,6 @@
 == 1. const, let vs var
 
+(1) Hoisting
 [TIP] 
 [ Javascript Hoisting ] +
 후선언된 변수나, 함수들이 해당 Scope에서 최상위에 위치하는 현상 +
@@ -27,13 +28,13 @@ bar.push('abc'); // OK, the array is mutable
  const EMPTY_ARRAY = Object.freeze([]);
 
 * let
-재선언 시에 에러가 발생
+- 재선언 시에 에러가 발생
 [source,javascript]
 console.log(test3);
 let test3; //error
 
 ** 특징
-변수 재할당(reassign) 할 수 있음(변수를 변경할 때 (mutate a variable) 사용하는 것이 좋다)+
+- 변수 재할당(reassign) 할 수 있음(변수를 변경할 때 (mutate a variable) 사용하는 것이 좋다)
 예: 반복문
 [source,javascript]
 let foo = 'abc';
