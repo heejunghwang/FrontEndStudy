@@ -1,6 +1,7 @@
 <script src="https://unpkg.com/vue/dist/vue.js"></script>
 <script>
 window.onload = function () {
+
     /** JSON 데이터 매핑*/
     var app = new Vue({
     el: '#app',
@@ -29,22 +30,31 @@ window.onload = function () {
         }
     });
 
+    /** 템플릿 테스트*/
+    //템플릿 등록
+    //컴포넌트 사용 전 등록되어야함!
+    Vue.component('my-component', {
+        template: '<p>My framework is Vue.js!</p>'
+    });
+
     /** For문 테스트*/
     var todoList = new Vue({
-    el: '#todoList',
-    data: {
-        todos: [
-        { text: 'Learn JavaScript' },
-        { text: 'Learn Vue' },
-        { text: 'Build something awesome' }
-        ]
-    }
+        el: '#todoList',
+        data: {
+            todos: [
+            { text: 'Learn JavaScript' },
+            { text: 'Learn Vue' },
+            { text: 'Build something awesome' }
+            ]
+        }
     });
 
     /** 이벤트 예제 SKIP*/
 
-    /** 템플릿 테스트*/
-
+    // 뷰 모델 인스턴스 생성
+    var vm = new Vue({
+        el: '#example'
+    });
 }
 
 
@@ -67,6 +77,9 @@ window.onload = function () {
     <div v-for="todo in todos">
       {{ todo.text }}
     </div>
-    ----------------------
-    템플릿 테스트
+    <my-component></my-component>
+</div>
+
+<div id="example">
+    <my-component></my-component>
 </div>
