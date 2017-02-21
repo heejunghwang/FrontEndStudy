@@ -1,0 +1,72 @@
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script>
+window.onload = function () {
+    /** JSON 데이터 매핑*/
+    var app = new Vue({
+    el: '#app',
+    data: {
+        message: 'Hello Vue!'
+    }
+    });
+
+    /** JSON 데이터 매핑*/
+    var estimate = new Vue({
+        el : '#estimate',
+        data : {
+            Price : {
+                "dealerPrice" : "2333",
+                "officialPrice" : "1111" 
+            }
+
+        }
+    });
+
+    /** If문 테스트*/
+    var ForeignCar = new Vue({
+        el: '#ForeignCar',
+        data: {
+            seen: true
+        }
+    });
+
+    /** For문 테스트*/
+    var todoList = new Vue({
+    el: '#todoList',
+    data: {
+        todos: [
+        { text: 'Learn JavaScript' },
+        { text: 'Learn Vue' },
+        { text: 'Build something awesome' }
+        ]
+    }
+    });
+
+    /** 이벤트 예제 SKIP*/
+
+    /** 템플릿 테스트*/
+
+}
+
+
+</script>
+
+<div id="app" class="test">
+  {{ message }}
+</div>
+
+<div id="estimate">
+    딜러가 : {{Price.dealerPrice}},
+    소비자가 : {{Price.officialPrice}}
+</div>
+
+<div id="ForeignCar" class="test">
+  <p v-if="seen">이건 외제차</p>
+</div>
+
+<div id="todoList" class="test">
+    <div v-for="todo in todos">
+      {{ todo.text }}
+    </div>
+    ----------------------
+    템플릿 테스트
+</div>
