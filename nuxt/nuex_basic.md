@@ -8,7 +8,7 @@
       npm install
 - 프로젝트 실행
       npm run dev
-
+  
 - 템플릿
   - 미리 제공되는 템플릿 확인
       vue list
@@ -26,7 +26,7 @@
       pages/
       	test/
       		index.vue
-
+      
       => localhost:3000/test/index 실행시, index.vue로 바인딩 됨.
   - 동적 라우팅의 경우, _를 파일명 앞에 붙이면 됨.
 
@@ -34,7 +34,6 @@
 
 - CSS 적용하기 (예: bootstrap 4 적용)
   1. asset 폴더 하위에 css 파일 넣어두기
-
   2. nuxt.config 에 css 설정
       module.exports = {
         head: {
@@ -45,8 +44,7 @@
         ],
         //..중략
       }
-
-- 전체적인 구조
+  
 
   ~~~
   Document
