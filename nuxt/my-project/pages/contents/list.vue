@@ -4,36 +4,33 @@
       <h1 class="title">
         테스트
       </h1>
-      <h2 class="subtitle">
-        리스트 페이지
-      </h2>
+
+      <!-- 검색 영역-->
+      <div>
+        <form class="form-inline">
+          <div class="form-group">
+            <p class="form-control-static">* 검색</p>
+          </div>
+          <div class="form-group mx-sm-3">
+            <input type="text" class="form-control" placeholder="검색어를 입력하세요">
+          </div>
+          <button type="submit" class="btn btn-primary">검색</button>
+        </form>
+      </div>
+
       <table class="table">
         <thead>
         <tr>
           <th>#</th>
           <th>First Name</th>
           <th>Last Name</th>
-          <th>Username</th>
         </tr>
         </thead>
         <tbody>
-        <tr>
+        <tr v-for="item in list">
           <th scope="row">1</th>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>Larry</td>
-          <td>the Bird</td>
-          <td>@twitter</td>
+          <td>{{item.name}}</td>
+          <td>{{item.age}}</td>
         </tr>
         </tbody>
       </table>
@@ -43,7 +40,22 @@
 </template>
 
 <script>
+  import axios from 'axios'
 
+  export default {
+    asyncData () {
+      return axios.get('https://api.myjson.com/bins/7fo5p')
+        .then((res) => {
+          return {list: res.data}
+        })
+    },
+    computed: {
+
+    },
+    methods: {
+
+    }
+  }
 </script>
 
 <style>
