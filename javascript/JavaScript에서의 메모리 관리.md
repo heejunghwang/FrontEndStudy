@@ -63,4 +63,83 @@ var a3 = a1.concat(a2);
 	 - 언제불필요한지 알 수 없음.
 	 - Garbage collection 구현은 일반적인 문제를 해결하는데 제한됨.
 	 
+	 - 메모리 참조
+	- garbage collection 알고리즘은 참조에 의존함.
+	- 자바스크립트의 object들은 prototype을 참조(묵시적 참조)와 프로퍼티의 값(명시적 참조)가 있음
+- 자바스크립트의 흔한 누수 타입
+1. Global variables
+-  the global object is window
+~~~
+// CASE 1
+function foo(arg) {
+    bar = "some text";
+}
+
+//위와 아래는 동일
+
+function foo(arg) {
+    window.bar = "some text";
+}
+
+
+//CASE 2
+function foo() {
+    this.var1 = "potential accidental global";
+}
+// Foo called on its own, this points to the global object (window)
+
+// rather than being undefined.
+foo();
+~~~
+
+
+2. Timers or callbacks that are forgotten
+~~~
+var serverData = loadData();
+setInterval(function() {
+    var renderer = document.getElementById('renderer');
+    if(renderer) {
+        renderer.innerHTML = JSON.stringify(serverData);
+    }
+}, 5000); //This will be executed every ~5 seconds.
+~~~
+
+3. Closures
+~~~
+var theThing = null;
+var replaceThing = function () {
+  var originalThing = theThing;
+  var unused = function () {
+    if (originalThing) // a reference to 'originalThing'
+      console.log("hi");
+  };
+  theThing = {
+    longStr: new Array(1000000).join('*'),
+    someMethod: function () {
+      console.log("message");
+    }
+  };
+};
+setInterval(replaceThing, 1000);
+~~~
+
+4. Out of DOM references
+
+~~~
+var elements = {
+    button: document.getElementById('button'),
+    image: document.getElementById('image')
+};
+function doStuff() {
+    elements.image.src = 'http://example.com/image_name.png';
+}
+function removeImage() {
+    // The image is a direct child of the body element.
+    document.body.removeChild(document.getElementById('image'));
+    // At this point, we still have a reference to #button in the
+    //global elements object. In other words, the button element is
+    //still in memory and cannot be collected by the GC.
+}
+~~~
+	 
 - 참고 링크 : https://blog.sessionstack.com/how-javascript-works-memory-management-how-to-handle-4-common-memory-leaks-3f28b94cfbec
