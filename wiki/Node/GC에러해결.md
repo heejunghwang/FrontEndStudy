@@ -17,3 +17,11 @@ FATAL ERROR: CALL_AND_RETRY_LAST Allocation failed - JavaScript heap out of memo
 ~~~
 node --max_old_space_size=8000 build.js
 ~~~
+
+* cf) package.json
+- you can add the option
+~~~
+ "build": "node --max_old_space_size=8000 build/build.js"
+~~~
+
+
