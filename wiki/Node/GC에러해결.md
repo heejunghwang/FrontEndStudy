@@ -21,7 +21,9 @@ node --max_old_space_size=8000 build.js
 * cf) package.json
 - you can add the option
 ~~~
+ "scripts": {
  "build": "node --max_old_space_size=8000 build/build.js"
+ }
 ~~~
 
 
